@@ -17,8 +17,7 @@ permissions:
       mode: 755
       type:
         - directory
-
-  - object:/home/ubuntu
+  - object: /home/ubuntu
       pattern: "*.sh"
       owner: ubuntu
       mode: 755
