@@ -8,8 +8,7 @@ script:
   - ./gradlew war
 
 after_success:
-#  - cd ..
-#  - zip -r SimpleJavaProject.zip build/libs/test-1.0.0.war appspec.yml
+  - zip -r SimpleJavaProject.zip build/libs/test-1.0.0.war appspec.yml
   - ls
   - pwd
 
