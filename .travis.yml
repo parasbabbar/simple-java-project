@@ -1,3 +1,14 @@
 language: java
 jdk:
   - oraclejdk8
+sudo: false
+install: true
+
+before_deploy:
+  - ls
+
+
+notifications:
+  email:
+    recipients:
+      - instructor@csye6225.com
