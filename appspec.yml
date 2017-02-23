@@ -2,5 +2,25 @@ version: 0.0
 os: linux
 
 files:
-  - source: ./
+  - source: ./appspec.yml
     destination: /home/ubuntu
+  - source: /home/ubuntu/build/libs/test-1.0.0.war
+    destination: /var/lib/tomcat7/webapps/test-1.0.0.war
+
+- object: /var/lib/tomcat7/webapps
+    pattern: "**"
+    owner: tomcat7
+    group: tomcat7
+    mode: 755
+    type:
+      - directory
+
+BeforeInstall:
+ - location: /home/ubuntu/stopTomcat.sh
+   timeout: 180
+   runas: ubuntu
+
+AfterInstall:
+ - location: /home/ubuntu/startTomcat.sh
+   timeout: 180
+   runas: ubuntu
