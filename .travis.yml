@@ -7,7 +7,7 @@ install: true
 script:
   - ./gradlew war
 
-after_success:s
+after_success:
   - mkdir codedeploy
   - zip -r SimpleJavaProject.zip build/libs/test-1.0.0.war appspec.yml
   - mv SimpleJavaProject.zip codedeploy/
