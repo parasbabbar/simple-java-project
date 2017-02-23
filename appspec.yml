@@ -9,22 +9,22 @@ files:
   - source: /home/ubuntu/build/libs/test-1.0.0.war
     destination: /var/lib/tomcat7/webapps/test-1.0.0.war
 
-- object: /var/lib/tomcat7/webapps
-    pattern: "**"
-    owner: tomcat7
-    group: tomcat7
-    mode: 755
-    type:
-      - directory
-
-- object:/home/ubuntu
-    pattern: "*.sh"
-    owner: ubuntu
-    mode: 755
-    type:
-      - file
-
-AfterInstall:
- - location: /home/ubuntu/restartTomcat.sh
-   timeout: 180
-   runas: ubuntu
+#- object: /var/lib/tomcat7/webapps
+#    pattern: "**"
+#    owner: tomcat7
+#    group: tomcat7
+#    mode: 755
+#    type:
+#      - directory
+#
+#- object:/home/ubuntu
+#    pattern: "*.sh"
+#    owner: ubuntu
+#    mode: 755
+#    type:
+#      - file
+#
+#AfterInstall:
+# - location: /home/ubuntu/restartTomcat.sh
+#   timeout: 180
+#   runas: ubuntu
