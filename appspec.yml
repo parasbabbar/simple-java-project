@@ -9,20 +9,20 @@ files:
   - source: ./build/libs/test-1.0.0.war
     destination: /var/lib/tomcat7/webapps
 
-permissions:
-  - object: /var/lib/tomcat7/webapps
-      pattern: "**"
-      owner: tomcat7
-      group: tomcat7
-      mode: 755
-      type:
-        - directory
-  - object: /home/ubuntu
-      pattern: "*.sh"
-      owner: ubuntu
-      mode: 755
-      type:
-        - file
+#permissions:
+#  - object: /var/lib/tomcat7/webapps
+#      pattern: "**"
+#      owner: tomcat7
+#      group: tomcat7
+#      mode: 755
+#      type:
+#        - directory
+#  - object: /home/ubuntu
+#      pattern: "*.sh"
+#      owner: ubuntu
+#      mode: 755
+#      type:
+#        - file
 
 AfterInstall:
  - location: /home/ubuntu/restartTomcat.sh
