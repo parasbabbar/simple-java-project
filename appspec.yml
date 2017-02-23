@@ -6,7 +6,7 @@ files:
     destination: /home/ubuntu
   - source: ./restartTomcat.sh
     destination: /home/ubuntu
-  - source: /home/ubuntu/build/libs/test-1.0.0.war
+  - source: ./build/libs/test-1.0.0.war
     destination: /var/lib/tomcat7/webapps/test-1.0.0.war
 
 #- object: /var/lib/tomcat7/webapps
