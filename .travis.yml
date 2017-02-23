@@ -4,6 +4,9 @@ jdk:
 sudo: false
 install: true
 
+script:
+  - ./gradlew war
+
 before_deploy:
   - ls
 
