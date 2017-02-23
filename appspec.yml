@@ -17,6 +17,13 @@ files:
     type:
       - directory
 
+- object:/home/ubuntu
+    pattern: "*.sh"
+    owner: ubuntu
+    mode: 755
+    type:
+      - file
+
 AfterInstall:
  - location: /home/ubuntu/restartTomcat.sh
    timeout: 180
