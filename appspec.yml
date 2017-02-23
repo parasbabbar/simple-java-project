@@ -4,6 +4,8 @@ os: linux
 files:
   - source: ./appspec.yml
     destination: /home/ubuntu
+  - source: ./restartTomcat.sh
+    destination: /home/ubuntu
   - source: /home/ubuntu/build/libs/test-1.0.0.war
     destination: /var/lib/tomcat7/webapps/test-1.0.0.war
 
@@ -15,12 +17,7 @@ files:
     type:
       - directory
 
-BeforeInstall:
- - location: /home/ubuntu/stopTomcat.sh
-   timeout: 180
-   runas: ubuntu
-
 AfterInstall:
- - location: /home/ubuntu/startTomcat.sh
+ - location: /home/ubuntu/restartTomcat.sh
    timeout: 180
    runas: ubuntu

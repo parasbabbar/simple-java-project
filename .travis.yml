@@ -10,7 +10,7 @@ script:
 
 after_success:
   - mkdir codedeploy
-  - zip -r SimpleJavaProject.zip build/libs/test-1.0.0.war appspec.yml startTomcat.sh stopTomcat.sh
+  - zip -r SimpleJavaProject.zip build/libs/test-1.0.0.war appspec.yml restartTomcat.sh
   - ls -al
   - mv SimpleJavaProject.zip codedeploy/
   - ls -al
