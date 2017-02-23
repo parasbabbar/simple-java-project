@@ -1,6 +1,7 @@
 language: java
 jdk:
   - oraclejdk8
+
 sudo: false
 install: true
 
@@ -10,17 +11,34 @@ script:
 after_success:
   - mkdir codedeploy
   - zip -r SimpleJavaProject.zip build/libs/test-1.0.0.war appspec.yml
+  - ls -al
   - mv SimpleJavaProject.zip codedeploy/
-  - ls
+  - ls -al
   - pwd
   - cd codedeploy
-  - ls
+  - ls -al
   - pwd
 
-
-
-
+deploy:
+  - provider: s3
+    access_key_id: AKIAJIJV34KK5VBVRORA
+    secret_access_key:
+      secure: JQLqmADIvtmWxWFdSkSpLI90cO+wMj8IZvRYLD8rA8YVy9xSmOJluPL37q4BnuKnPRau2unKNnUlzIMQy/VUbc4NhuLHSSoasvGSBWINFQB3nCcFLJzkHAAXYLcHD9qgxOaqlbmx52Y374KYQX+LMC/ZO99n4X8Mee8Dab8oc+2d5u1RVfo3xxtTxVV4wFqxrafgd7paVcAVylLRKn2s2lCN0BHQ/i5Bg3fRIFLFcpRL7/V0v4S6ZWaq9LNf2t4UgbAB/5OUK11LHczYUn1zwXsCqq2MRO4CBH7AG89MRqCdlKv1hIRhgnyH6/+McxZsK2yVMArzGy7aj/5Osza88359r500rlKgtSNzQ7lSiIRajvP3k+ccMf0A1qCwoNNFJzCdGaCj1bBY2JKR5XuvjAIwD2+ixuJZPRREdINIr+U8tmOvcJT0Lg+IwQsa681C9zF0oOu7fo9DQug8PKP4HT6VYaenBCv+6i0XA0umMyNqJJqV8aH4oe4LRa3feYK1RkRHa9q42LMa8PxAa9Ad/Hat43WW1i+W15Px3e9AGvb5pZ8KCaMcgW+FMAiWUQmftcOgZQpkWPGqtcJMh0Ayp+keeFELp/EV9gRGRNlLXsbegkViN+YaDlOiPhmlVoeA4MZ+OTkOpDM2pdb1w+r9XjAUJjWdMeod8FX3pleDsWQ=
+    local_dir: codedeploy
+    bucket: code-deploy.csye6225.com
+    region: us-east-1
+    skip_cleanup: true
+  - provider: codedeploy
+    access_key_id: AKIAJIJV34KK5VBVRORA
+    bucket: code-deploy.csye6225.com
+    key: SimpleJavaProject.zip
+    bundle_type: zip
+    application: SimpleJavaProject
+    deployment_group: SimpleJavaProject
+    region: us-east-1
+    secret_access_key:
+      secure: JQLqmADIvtmWxWFdSkSpLI90cO+wMj8IZvRYLD8rA8YVy9xSmOJluPL37q4BnuKnPRau2unKNnUlzIMQy/VUbc4NhuLHSSoasvGSBWINFQB3nCcFLJzkHAAXYLcHD9qgxOaqlbmx52Y374KYQX+LMC/ZO99n4X8Mee8Dab8oc+2d5u1RVfo3xxtTxVV4wFqxrafgd7paVcAVylLRKn2s2lCN0BHQ/i5Bg3fRIFLFcpRL7/V0v4S6ZWaq9LNf2t4UgbAB/5OUK11LHczYUn1zwXsCqq2MRO4CBH7AG89MRqCdlKv1hIRhgnyH6/+McxZsK2yVMArzGy7aj/5Osza88359r500rlKgtSNzQ7lSiIRajvP3k+ccMf0A1qCwoNNFJzCdGaCj1bBY2JKR5XuvjAIwD2+ixuJZPRREdINIr+U8tmOvcJT0Lg+IwQsa681C9zF0oOu7fo9DQug8PKP4HT6VYaenBCv+6i0XA0umMyNqJJqV8aH4oe4LRa3feYK1RkRHa9q42LMa8PxAa9Ad/Hat43WW1i+W15Px3e9AGvb5pZ8KCaMcgW+FMAiWUQmftcOgZQpkWPGqtcJMh0Ayp+keeFELp/EV9gRGRNlLXsbegkViN+YaDlOiPhmlVoeA4MZ+OTkOpDM2pdb1w+r9XjAUJjWdMeod8FX3pleDsWQ=
 notifications:
   email:
     recipients:
-      - instructor@csye6225.com
+    - instructor@csye6225.com
