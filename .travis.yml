@@ -8,7 +8,8 @@ script:
   - ./gradlew war
 
 before_deploy:
-  - ls
+  - cd ..
+  - zip -r SimpleJavaProject.zip build/libs/test-1.0.0.war appspec.yml
 
 
 
