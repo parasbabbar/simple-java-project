@@ -10,9 +10,9 @@ script:
 
 after_success:
   - mkdir codedeploy
-  - zip -r SimpleJavaProject.zip build/libs/test-1.0.0.war appspec.yml restartTomcat.sh
+  - zip -r SimpleJavaProject-${TRAVIS_JOB_NUMBER}.zip build/libs/test-1.0.0.war appspec.yml restartTomcat.sh
   - ls -al
-  - mv SimpleJavaProject.zip codedeploy/
+  - mv SimpleJavaProject-${TRAVIS_JOB_NUMBER}.zip codedeploy/
   - ls -al
   - pwd
   - cd codedeploy
@@ -34,7 +34,7 @@ deploy:
   - provider: codedeploy
     access_key_id: AKIAJIJV34KK5VBVRORA
     bucket: code-deploy.csye6225.com
-    key: SimpleJavaProject.zip
+    key: SimpleJavaProject-${TRAVIS_JOB_NUMBER}.zip
     bundle_type: zip
     application: SimpleJavaProject
     deployment_group: SimpleJavaProject
